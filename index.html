@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Pension Felix – Gästinnen‑Feedback</title>
+  <title>Hotel Felix – Gästinnen‑Feedback</title>
   <meta name="color-scheme" content="light dark">
   <style>
     :root{--bg:#faf9f7;--card:#ffffff;--ink:#111827;--muted:#6b7280;--accent:#2563eb;--ok:#16a34a;--border:#d1d5db;--chip:#f3f4f6;--pill:#f9fafb}
@@ -49,14 +49,15 @@
       <div class="brand">
         <div class="logo">✦</div>
         <div>
-          <h1>Pension Felix – Gästinnen‑Feedback</h1>
+          <h1>Hotel Felix – Gästinnen‑Feedback</h1>
           <div class="muted">Skala: 1 = „na geh 😬“, 3 = „passt scho“, 5 = „ur leiwand!“</div>
         </div>
       </div>
     </header>
 
+    <!-- Hosted (HTTPS) POST target -->
     <form id="formFelix" method="POST" action="https://formsubmit.co/felix.taglieber@gmx.at" accept-charset="UTF-8" novalidate>
-      <input type="hidden" name="_subject" value="Pension Felix – Gästinnen‑Feedback">
+      <input type="hidden" name="_subject" value="Hotel Felix – Gästinnen‑Feedback">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="">
@@ -64,7 +65,7 @@
 
       <div class="card">
         <div class="row">
-          <div><label>VIP‑Gästin (Name)</label><input name="gastin" required placeholder="z.B. Anna" autocomplete="name"></div>
+          <div><label>VIP‑Gästin (Name)</label><input name="gastin" required placeholder="z. B. Anna" autocomplete="name"></div>
           <div><label>Datum des Feedbacks</label><input type="date" name="datum" required></div>
         </div>
       </div>
@@ -197,14 +198,7 @@
         <select name="wieder"><option value="">Bitte wählen…</option><option>Fix</option><option>Schauen ma mal</option><option>Nur wenn’s Palatschinken gibt</option></select>
       </div>
 
-      <div class="card">
-        <h2>Gesamteindruck & Empfehlung</h2>
-        <div class="scale" data-key="gesamt"><div class="hint">Gesamteindruck (overall vibe)</div><div class="pills"></div></div>
-        <label>Weiterempfehlung</label>
-        <select name="empfehlung"><option value="">Bitte wählen…</option><option>allen Freund*innen</option><option>ausgewählten VIPs</option><option>streng geheim – sonst ausgebucht!</option></select>
-        <label>Unterschrift / Name (optional)</label><input name="sign" autocomplete="name">
-      </div>
-
+      <!-- 13) Zweisamkeit direkt nach 12) -->
       <div class="card">
         <h2>13) Zweisamkeit & Wünsche (freiwillig)</h2>
         <div class="scale" data-key="sex_erlebnis">
@@ -221,6 +215,15 @@
         </select>
         <label>Zukünftige Wünsche</label>
         <textarea name="sex_wuensche" placeholder="freiwillig"></textarea>
+      </div>
+
+      <!-- Danach: Gesamteindruck -->
+      <div class="card">
+        <h2>Gesamteindruck & Empfehlung</h2>
+        <div class="scale" data-key="gesamt"><div class="hint">Gesamteindruck (overall vibe)</div><div class="pills"></div></div>
+        <label>Weiterempfehlung</label>
+        <select name="empfehlung"><option value="">Bitte wählen…</option><option>allen Freund*innen</option><option>ausgewählten VIPs</option><option>streng geheim – sonst ausgebucht!</option></select>
+        <label>Unterschrift / Name (optional)</label><input name="sign" autocomplete="name">
       </div>
 
       <div class="btns">
@@ -272,7 +275,7 @@
   }
   function buildSummary(d){
     const L=[]; const ln=(k,v)=>L.push('• '+k+': '+(v||'–'));
-    L.push('★ Gästinnen‑Feedback: Pension Felix');
+    L.push('★ Gästinnen‑Feedback: Hotel Felix');
     L.push('Gästin: '+(d.gastin||'–')+' | Datum: '+(d.datum||'–'));
     ln('Check‑in', d.checkin_freundlichkeit);
     ln('Zimmer – Bett', d.bettqualitaet); ln('Kissen/Decken', d.kissen); ln('Temperatur', d.temperatur);
@@ -284,14 +287,15 @@
     ln('WLAN', d.wlan); ln('Brettspiele', d.spiele);
     ln('Service – Erreichbarkeit', d.erreichbarkeit); ln('Schmäh', d.schmaeh); ln('Wohlfühl', d.wohlfuehl);
     ln('Nahversorgung', d.nahversorgung); ln('Öffi', d.oeffi);
-    ln('Preis‑Leistung', d.preisleistung); ln('Gesamteindruck', d.gesamt);
-    ln('Sex‑Erlebnis', d.sex_erlebnis); ln('Wie oft gewünscht', d.sex_haeufigkeit);
+    ln('Preis‑Leistung', d.preisleistung);
+    ln('Zweisamkeit – Sex‑Erlebnis', d.sex_erlebnis); ln('Wie oft gewünscht', d.sex_haeufigkeit);
+    ln('Gesamteindruck', d.gesamt);
     return L.join('%0D%0A');
   }
   document.getElementById('btnMail').addEventListener('click', function(){
     const d=getData(document.getElementById('formFelix'));
     if(!d.gastin || !d.datum){ alert('Bitte Name und Datum ausfüllen.'); return; }
-    const subject=encodeURIComponent('Pension Felix – Feedback von '+(d.gastin||'Gästin')+' ('+(d.datum||'Datum')+')');
+    const subject=encodeURIComponent('Hotel Felix – Feedback von '+(d.gastin||'Gästin')+' ('+(d.datum||'Datum')+')');
     const body=buildSummary(d);
     location.href='mailto:felix.taglieber@gmx.at?subject='+subject+'&body='+body;
   });
