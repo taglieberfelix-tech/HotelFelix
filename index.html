@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pension Felix – Gästinnen‑Feedback</title>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{--bg:#faf9f7;--card:#ffffff;--ink:#111827;--muted:#6b7280;--accent:#2563eb;--ok:#16a34a;--border:#d1d5db;--chip:#f3f4f6;--pill:#f9fafb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0c0f;--card:#121723;--ink:#f3f4f6;--muted:#a1a1aa;--accent:#7c83ff;--ok:#22c55e;--border:#334155;--chip:#1f2937;--pill:#0f172a}
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fcfcfb,var(--bg));}
+    .wrap{max-width:820px;margin:0 auto;padding:16px 16px 80px}
+    header{padding:10px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:42px;height:42px;border-radius:12px;background:radial-gradient(circle at 30% 30%, #fde68a, #f59e0b);display:grid;place-items:center;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+    h1{margin:0;font-size:20px}
+    .muted{color:var(--muted);font-size:13px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    h2{margin:0 0 10px 0;font-size:18px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px} @media (max-width:720px){.row{grid-template-columns:1fr}}
+    label{display:block;font-weight:600;margin:8px 0 6px}
+    input[type="text"],input[type="date"],select,textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--ink);font-size:16px}
+    textarea{min-height:90px;resize:vertical}
+    .scale{display:flex;flex-direction:column;gap:10px;padding:10px 12px;border:1px dashed var(--border);border-radius:12px}
+    .scale .hint{font-size:14px;color:var(--muted)}
+    .pills{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;border:2px solid var(--border);background:var(--pill);font-weight:800;font-size:16px;cursor:pointer}
+    .pill input{display:none}
+    .pill.active{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.2)}
+    .checkboxes{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:999px;background:var(--chip)}
+    .chip input{width:18px;height:18px;accent-color:var(--accent)}
+    .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .btn{padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--card);font-weight:800;cursor:pointer;text-align:center}
+    .btn.primary{background:var(--accent);color:#fff;border-color:transparent}
+    .btn.mail{background:#10b981;color:#fff;border-color:transparent}
+    .alert{display:none;margin-top:10px;padding:12px;border-radius:12px}
+    .success{background:#ecfdf5;border:1px solid #d1fae5}
+    .error{background:#fef2f2;border:1px solid #fee2e2}
+    .tiny{color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">✦</div>
+        <div>
+          <h1>Pension Felix – Gästinnen‑Feedback</h1>
+          <div class="muted">Skala: 1 = „na geh 😬“, 3 = „passt scho“, 5 = „ur leiwand!“</div>
+        </div>
+      </div>
+    </header>
+
+    <form id="formFelix" method="POST" action="https://formsubmit.co/felix.taglieber@gmx.at" accept-charset="UTF-8" novalidate>
+      <input type="hidden" name="_subject" value="Pension Felix – Gästinnen‑Feedback">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="">
+      <input type="text" name="_honey" style="display:none">
+
+      <div class="card">
+        <div class="row">
+          <div><label>VIP‑Gästin (Name)</label><input name="gastin" required placeholder="z.B. Anna" autocomplete="name"></div>
+          <div><label>Datum des Feedbacks</label><input type="date" name="datum" required></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>1) Check‑in & Anreise</h2>
+        <div class="scale" data-key="checkin_freundlichkeit">
+          <div class="hint">Freundlichkeit beim Check‑in</div><div class="pills"></div>
+        </div>
+        <label>Kommentar</label><textarea name="checkin_comment" placeholder="War der Empfang mit Umarmung + Getränk?"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>2) Zimmer & Gemütlichkeit</h2>
+        <div class="row">
+          <div class="scale" data-key="bettqualitaet"><div class="hint">Bettqualität</div><div class="pills"></div></div>
+          <div class="scale" data-key="kissen"><div class="hint">Kissen/Decken</div><div class="pills"></div></div>
+          <div class="scale" data-key="temperatur"><div class="hint">Temperatur/Frischluft</div><div class="pills"></div></div>
+        </div>
+        <label>Steckdosen in Griffweite?</label>
+        <select name="steckdosen"><option value="">Bitte wählen…</option><option>Ja</option><option>Na bumm, Ladegerät im Flur</option></select>
+        <label>Kommentar</label><textarea name="zimmer_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>3) Bad & Wellness („Spa daheim“)</h2>
+        <div class="row">
+          <div class="scale" data-key="wasserdruck"><div class="hint">Wasserdruck</div><div class="pills"></div></div>
+          <div class="scale" data-key="warmwasser"><div class="hint">Warmwasser‑Verfügbarkeit</div><div class="pills"></div></div>
+        </div>
+        <label>Handtücher</label>
+        <select name="handtuecher"><option value="">Bitte wählen…</option><option>flauschig</option><option>geht so</option><option>haben g’scheppert</option></select>
+        <label>Föhn vorhanden?</label>
+        <select name="foehn"><option value="">Bitte wählen…</option><option>Ja</option><option>Nein, naturbelassen is eh schön</option></select>
+        <label>Kommentar</label><textarea name="bad_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>4) Kulinarik & Kaffee</h2>
+        <div class="row">
+          <div class="scale" data-key="fruehstueck"><div class="hint">Frühstücksservice (Kaffee/Tee/Weckerl)</div><div class="pills"></div></div>
+          <div class="scale" data-key="snacks"><div class="hint">Snack‑Versorgung</div><div class="pills"></div></div>
+        </div>
+        <label>Abendessen</label>
+        <select name="abendessen"><option value="">Bitte wählen…</option><option>gekocht</option><option>bestellt</option><option>Heuriger hat uns gerettet</option></select>
+        <label>Spezialwünsche wurden erfüllt?</label>
+        <select name="spezial"><option value="">Bitte wählen…</option><option>Ja</option><option>Na geh</option></select>
+        <label>Kommentar</label><textarea name="kulinarik_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>5) Housekeeping</h2>
+        <div class="row">
+          <div class="scale" data-key="ordnung"><div class="hint">Ordnung im gemeinsamen Bereich</div><div class="pills"></div></div>
+          <div class="scale" data-key="zauberhand"><div class="hint">Müll & Geschirr – Zauberhand</div><div class="pills"></div></div>
+        </div>
+        <label>Handtuch-/Bettwäsche‑Service</label>
+        <select name="service"><option value="">Bitte wählen…</option><option>wöchentlich</option><option>DIY, eh klar</option></select>
+        <label>Kommentar</label><textarea name="housekeeping_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>6) Ruhe & Lärmpegel</h2>
+        <div class="scale" data-key="nachtruhe"><div class="hint">Nachtruhe</div><div class="pills"></div></div>
+        <label>Störfaktoren (wenn überhaupt)</label>
+        <div class="checkboxes">
+          <label class="chip"><input type="checkbox" name="stoer" value="Nachbarn">Nachbarn</label>
+          <label class="chip"><input type="checkbox" name="stoer" value="Straßenbahn">Straßenbahn</label>
+          <label class="chip"><input type="checkbox" name="stoer" value="Gastgeber Felix schnarcht">Gastgeber Felix schnarcht</label>
+        </div>
+        <label>Kommentar</label><textarea name="ruhe_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>7) Entertainment & WLAN</h2>
+        <div class="row">
+          <div class="scale" data-key="wlan"><div class="hint">WLAN‑Geschwindigkeit („schneller als der 13A?“)</div><div class="pills"></div></div>
+          <div class="scale" data-key="spiele"><div class="hint">Brettspiele/Unterhaltung</div><div class="pills"></div></div>
+        </div>
+        <label>Streaming/TV</label>
+        <select name="streaming"><option value="">Bitte wählen…</option><option>vorhanden</option><option>gemeinsam geschaut, war gmiatlich</option></select>
+        <label>Kommentar</label><textarea name="entertainment_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>8) Service & Personal (Felix 😇)</h2>
+        <div class="row">
+          <div class="scale" data-key="erreichbarkeit"><div class="hint">Erreichbarkeit („Wo is der Korkenzieher?“)</div><div class="pills"></div></div>
+          <div class="scale" data-key="schmaeh"><div class="hint">Schmäh‑Quote (richtig dosiert?)</div><div class="pills"></div></div>
+          <div class="scale" data-key="wohlfuehl"><div class="hint">Wohlfühlfaktor insgesamt</div><div class="pills"></div></div>
+        </div>
+        <label>Kommentar</label><textarea name="service_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>9) Lage & Umgebung</h2>
+        <div class="row">
+          <div class="scale" data-key="nahversorgung"><div class="hint">Nahversorgung (Billa ums Eck, Bäcker, Späti)</div><div class="pills"></div></div>
+          <div class="scale" data-key="oeffi"><div class="hint">Öffi‑Anbindung</div><div class="pills"></div></div>
+        </div>
+        <label>Ausflugstipps vom Haus</label>
+        <select name="ausflug"><option value="">Bitte wählen…</option><option>hilfreich</option><option>wir sind einfach bummeln gangen</option></select>
+        <label>Kommentar</label><textarea name="lage_comment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>10) Highlights & Lowlights</h2>
+        <label>Mein persönliches Highlight</label><textarea name="highlight"></textarea>
+        <label>Was war „meh“</label><textarea name="meh"></textarea>
+        <label>Ein Moment, der nachklingt</label><textarea name="moment"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>11) Bonusprogramm</h2>
+        <div class="checkboxes">
+          <label class="chip"><input type="checkbox" name="bonus" value="Welcome‑Drink">Welcome‑Drink</label>
+          <label class="chip"><input type="checkbox" name="bonus" value="Extra‑Kissen">Extra‑Kissen</label>
+          <label class="chip"><input type="checkbox" name="bonus" value="Frühstück im Bett">Frühstück im Bett</label>
+          <label class="chip"><input type="checkbox" name="bonus" value="Heuriger‑Date">Heuriger‑Date</label>
+          <label class="chip"><input type="checkbox" name="bonus" value="Überrasch mich">Überrasch mich</label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>12) Preis‑Leistung & Wiederbuchung</h2>
+        <div class="row">
+          <div class="scale" data-key="preisleistung"><div class="hint">„Für den Preis von 0 € bekam ich…“</div><div class="pills"></div></div>
+        </div>
+        <label>Würde ich wieder buchen?</label>
+        <select name="wieder"><option value="">Bitte wählen…</option><option>Fix</option><option>Schauen ma mal</option><option>Nur wenn’s Palatschinken gibt</option></select>
+      </div>
+
+      <div class="card">
+        <h2>Gesamteindruck & Empfehlung</h2>
+        <div class="scale" data-key="gesamt"><div class="hint">Gesamteindruck (overall vibe)</div><div class="pills"></div></div>
+        <label>Weiterempfehlung</label>
+        <select name="empfehlung"><option value="">Bitte wählen…</option><option>allen Freund*innen</option><option>ausgewählten VIPs</option><option>streng geheim – sonst ausgebucht!</option></select>
+        <label>Unterschrift / Name (optional)</label><input name="sign" autocomplete="name">
+      </div>
+
+      <div class="card">
+        <h2>13) Zweisamkeit & Wünsche (freiwillig)</h2>
+        <div class="scale" data-key="sex_erlebnis">
+          <div class="hint">Sex‑Erlebnis</div><div class="pills"></div>
+        </div>
+        <label>Wie oft ist gewünscht?</label>
+        <select name="sex_haeufigkeit">
+          <option value="">Bitte wählen…</option>
+          <option>nie / momentan nicht</option>
+          <option>selten (ca. 1×/Woche)</option>
+          <option>ab und zu (2–3×/Woche)</option>
+          <option>oft (täglich)</option>
+          <option>sehr oft (mehrmals täglich)</option>
+        </select>
+        <label>Zukünftige Wünsche</label>
+        <textarea name="sex_wuensche" placeholder="freiwillig"></textarea>
+      </div>
+
+      <div class="btns">
+        <button type="submit" class="btn primary">Senden</button>
+        <button type="button" id="btnMail" class="btn mail">E‑Mail‑App</button>
+      </div>
+
+      <div class="alert success" id="okMsg">Danke! Deine Antwort wurde verschickt. Felix bekommt eine E‑Mail. 🥂</div>
+      <div class="alert error" id="errMsg">Uff, das hat nicht geklappt. Bitte E‑Mail‑App nutzen.</div>
+
+      <p class="tiny">Hinweis: Beim ersten Mal schickt FormSubmit ggf. eine Verifizierungs‑Mail an Felix. Danach läuft’s automatisch.</p>
+    </form>
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const next = document.querySelector('input[name="_next"]');
+    if(next){ next.value = new URL('thankyou.html', location.href).href; }
+  });
+
+  document.querySelectorAll('.scale').forEach((box, idx)=>{
+    const pills = box.querySelector('.pills');
+    const key = box.getAttribute('data-key') || ('scale_'+idx);
+    for(let i=1;i<=5;i++){
+      const id = key+'_'+i;
+      const el = document.createElement('label');
+      el.className='pill';
+      el.innerHTML='<input id="'+id+'" type="radio" name="'+key+'" value="'+i+'"><span>'+i+'</span>';
+      el.setAttribute('for', id);
+      pills.appendChild(el);
+    }
+    pills.addEventListener('change', (e)=>{
+      if(e.target && e.target.name===key){
+        pills.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+        const active = pills.querySelector('input[name="'+key+'"]:checked');
+        if(active){ active.closest('.pill').classList.add('active'); }
+      }
+    });
+  });
+
+  function getData(form){
+    const d = {}; const fd = new FormData(form);
+    fd.forEach((v,k)=>{ if(d[k]!==undefined){ if(!Array.isArray(d[k])) d[k]=[d[k]]; d[k].push(v); } else d[k]=v; });
+    document.querySelectorAll('.scale').forEach(box=>{
+      const key = box.getAttribute('data-key'); const chosen = box.querySelector('input[type=radio]:checked');
+      d[key] = chosen ? chosen.value : '';
+    });
+    return d;
+  }
+  function buildSummary(d){
+    const L=[]; const ln=(k,v)=>L.push('• '+k+': '+(v||'–'));
+    L.push('★ Gästinnen‑Feedback: Pension Felix');
+    L.push('Gästin: '+(d.gastin||'–')+' | Datum: '+(d.datum||'–'));
+    ln('Check‑in', d.checkin_freundlichkeit);
+    ln('Zimmer – Bett', d.bettqualitaet); ln('Kissen/Decken', d.kissen); ln('Temperatur', d.temperatur);
+    ln('Steckdosen', d.steckdosen);
+    ln('Bad – Wasserdruck', d.wasserdruck); ln('Warmwasser', d.warmwasser);
+    ln('Frühstück', d.fruehstueck); ln('Snacks', d.snacks);
+    ln('Housekeeping – Ordnung', d.ordnung); ln('Zauberhand', d.zauberhand);
+    ln('Nachtruhe', d.nachtruhe); ln('Störfaktoren', Array.isArray(d.stoer)?d.stoer.join(', '):d.stoer||'');
+    ln('WLAN', d.wlan); ln('Brettspiele', d.spiele);
+    ln('Service – Erreichbarkeit', d.erreichbarkeit); ln('Schmäh', d.schmaeh); ln('Wohlfühl', d.wohlfuehl);
+    ln('Nahversorgung', d.nahversorgung); ln('Öffi', d.oeffi);
+    ln('Preis‑Leistung', d.preisleistung); ln('Gesamteindruck', d.gesamt);
+    ln('Sex‑Erlebnis', d.sex_erlebnis); ln('Wie oft gewünscht', d.sex_haeufigkeit);
+    return L.join('%0D%0A');
+  }
+  document.getElementById('btnMail').addEventListener('click', function(){
+    const d=getData(document.getElementById('formFelix'));
+    if(!d.gastin || !d.datum){ alert('Bitte Name und Datum ausfüllen.'); return; }
+    const subject=encodeURIComponent('Pension Felix – Feedback von '+(d.gastin||'Gästin')+' ('+(d.datum||'Datum')+')');
+    const body=buildSummary(d);
+    location.href='mailto:felix.taglieber@gmx.at?subject='+subject+'&body='+body;
+  });
+</script>
+</body>
+</html>
